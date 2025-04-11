@@ -1,0 +1,8 @@
+<Obfuscator>
+	<Var name="InPath" value="bin\Debug\net9.0-windows\" />
+	<Var name="OutPath" value="bin\Debug\net9.0-windows\obfuscated\" />
+	<Var name="RenameSymbols" value="true" />
+	<Var name="UseUnicodeNames" value="true" />
+	<Module file="$(InPath)ZackDictCore.dll">
+	</Module>
+</Obfuscator>

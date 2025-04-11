@@ -1,0 +1,2 @@
+Created using DB Browser(SQLCipher)
+password: ab%A1l010o1
