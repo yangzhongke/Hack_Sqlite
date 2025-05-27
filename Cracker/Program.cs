@@ -50,7 +50,7 @@ namespace Cracker
                         MessageBox.Show(fieldName+","+type);
                     }*/
                     using var cmd = sqliteConnection.CreateCommand();
-                    cmd.CommandText = "select word, chinese from Words";
+                    cmd.CommandText = "select word, chinese from Words limit 2";
                     using var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {

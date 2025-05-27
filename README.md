@@ -1,5 +1,22 @@
+# Prerequisite
+1. ZackDictCore.zip: To be hacked
+2. Install DB.Browser.for.SQLite. 
+   - DB Browser (SQLCipher): Open encrypted SQLite DB using SQLCipher
+   - DB Browser (SQLite): Open unencrypted SQLite DB
+3. Install dnEditor: .NET assembly editor
+4. ILSpy: .NET decompiler
+5. [WinDBG](https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/): Debugger 
+
+# Attempt 0
+1. Open sqlite file using DB Browser (SQLite)
+2. Open sqlite file using DB Browser (SQLCipher)
+3. Check connection string.
+4. Decompile using ILSpy.
+
 # Attempt 1: WinDbg
 1. Install WinDbg
+2. Launch the debugged application and break.
+3. Open View --> command
 2. Load clr module(.Net Framework)
 
 ```
@@ -28,6 +45,7 @@ dotnet sos install
 ```
 
 5. Search "Password"
+6. Open db file using DB Browser (SQLite).
 
 # Attempt 2: Edit dll
 
@@ -41,9 +59,10 @@ Use dnEditor to edit an assembly, and prepend the following IL instructions:
 ldarg.1
 ldc.i4.0
 new obj System.Void Microsoft.Data.Sqlite.SqliteException::.ctor(System.String, System.Int32)
+throw
 ```
 4. Save
-5. Run. 
+5. Run.
 
 # Attempt 3:
 1. Create a Windows Form application(.NET)
@@ -83,3 +102,9 @@ asmMain.EntryPoint.Invoke(null, new object[0]);
 6. Get table names
 7. Get table fields
 8. Run selected.
+
+# How to prevent being hacked?
+
+1. obfuscator.
+2. Native AOT. How to hack?
+3. This is a never-ending battle of attack and defense.

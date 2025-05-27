@@ -21,7 +21,7 @@ namespace ZackDictCore
         {
             var connectionString = new SqliteConnectionStringBuilder()
             {
-                DataSource = "dict.db",
+                DataSource = Path.Combine(Directory.GetParent(this.GetType().Assembly.Location).FullName, "dict.db"),
                 Mode = SqliteOpenMode.ReadWrite,
                 Password = "ab%A1l010o1"
             }.ToString();
