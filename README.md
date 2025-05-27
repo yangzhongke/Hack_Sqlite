@@ -1,29 +1,42 @@
-#Attempt 1: WinDbg
+# Attempt 1: WinDbg
 1. Install WinDbg
 2. Load clr module(.Net Framework)
+
 ```
 .loadby sos clr
 ```
+
 3. Load clr module(.Net Core)
+
 - Install sos
+
 ```
 dotnet tool install -g dotnet-sos
 dotnet sos install
 ```
+
 - Load
+
 ```
 .load C:\Users\{yourusername}\.dotnet\sos\sos.dll
 ```
+
 4. Dump strings
+
 ```
 !dumpheap -type System.String -strings
 ```
-5. Search"Password"
 
-#Attempt 2: Edit dll
+5. Search "Password"
+
+# Attempt 2: Edit dll
+
 1. Use ILSpy to understand Microsoft.Data.Sqlite.dll, let's hack Microsoft.Data.Sqlite.SqliteConnection.ConnectionString
 2. Regular way: add break point to set_ConnectionString
 3. My way:
+
+Use dnEditor to edit an assembly, and prepend the following IL instructions:
+
 ```
 ldarg.1
 ldc.i4.0
@@ -32,7 +45,7 @@ new obj System.Void Microsoft.Data.Sqlite.SqliteException::.ctor(System.String, 
 4. Save
 5. Run. 
 
-#Attempt 3:
+# Attempt 3:
 1. Create a Windows Form application(.NET)
 2. Add reference to Microsoft.Data.Sqlite.dll under the cracked application
 3. 
